@@ -1,0 +1,23 @@
+while(1)
+	  {
+		  
+		  i=1;
+		  for(j=0;j<4;j++)
+		  {
+			  
+				  LEDCA_PutVal(0xFF);
+				  LEDCC_PutVal(i);
+				  for(k=0;k<0x000FFFFF;k++);
+				  i=i<<1;
+			 
+		  }
+		  i=0xf1;
+		  		  for(j=0;j<4;j++)
+		  		  {
+		  			  LEDCC_PutVal(0x00);
+		  			  LEDCA_PutVal(~i);
+		  			  for(k=0;k<0x000FFFFF;k++);
+		  			  i=i<<1;
+		  		  }
+		  
+	  }

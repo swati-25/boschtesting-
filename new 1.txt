@@ -1,0 +1,26 @@
+typedef struct mydatatype_s
+{
+    char cvar1 :1;
+    char cvar2 :1;
+    char cvar3 :1;
+    char cvar4 :1;
+    char cvar5 :1;
+    char cvar6 :1;
+    char cvar7 :1;
+    //short svar1;
+
+}mydatatype_st;
+
+int main()
+{
+    mydatatype_st mdtvar1;
+    mdtvar1.cvar1 = 1 ;
+    mdtvar1.cvar2 = 0 ;
+    mdtvar1.cvar3 = 1 ;
+    mdtvar1.cvar4 = 0 ;
+    mdtvar1.cvar5 = 1 ;
+    mdtvar1.cvar6 = 0 ;
+    mdtvar1.cvar7 = 1 ;
+    printf(" size= %d \n", sizeof(mydatatype_st));
+    return 0;
+}

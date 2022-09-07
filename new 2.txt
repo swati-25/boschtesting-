@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+ struct mydatatype_s
+    {
+        unsigned char cvar0 :1;
+        unsigned char cvar1 :1;
+        unsigned char cvar2 :1;
+        unsigned char cvar3 :1;
+        unsigned char cvar4 :1;
+        unsigned char cvar5 :1;
+        unsigned char cvar6 :1;
+        unsigned char cvar7 :1;
+        //short svar1;
+
+    };
+union uabc
+{
+    struct mydatatype_s mdt_s1;
+    char cvar8;
+
+};
+
+int main()
+{
+    union uabc uabc1 ;
+
+    uabc1.mdt_s1.cvar0= 1;
+    uabc1.mdt_s1.cvar1= 1;
+    uabc1.mdt_s1.cvar2= 0;
+    uabc1.mdt_s1.cvar3= 0;
+    uabc1.mdt_s1.cvar4= 1;
+    uabc1.mdt_s1.cvar5= 0;
+    uabc1.mdt_s1.cvar6= 1;
+    uabc1.mdt_s1.cvar7= 0;
+    //mydatatype_st mdtvar1;
+
+    printf(" data = %d \n", uabc1.cvar8);
+    uabc1.cvar8 = 0x35 ;
+    printf(" size= %d \n", sizeof(union uabc));
+    return 0;
+}
+
+
+/*
+int main()
+{
+    struct mydatatype_s mdtvar1, *p_mdtvar1;
+    p_mdtvar1= &mdtvar1;
+    mydatatype_st mdtvar2;
+    mdtvar1.cvar1 = 10 ;
+    mdtvar1.svar1 = 1234;
+    printf("cvar1 =%c  svar1 = %d !\n",mdtvar1.cvar1,mdtvar1.svar1);
+    printf("ptr cvar1 =%c  svar1 = %d !\n",p_mdtvar1->cvar1,p_mdtvar1->svar1);
+
+    mdtvar1.cvar1 = 59 ;
+    mdtvar1.svar1 = 1234;
+    printf("cvar1 =%c  svar1 = %d !\n",mdtvar1.cvar1,mdtvar1.svar1);
+    printf("ptr cvar1 =%c  svar1 = %d !\n",p_mdtvar1->cvar1,p_mdtvar1->svar1);
+    printf("size= %d \n", sizeof(mydatatype_st));
+    printf("ptr size= %d \n", sizeof(p_mdtvar1));
+   /* scanf("%c", &mdtvar2.cvar1);
+    scanf("%d", &mdtvar2.svar1);
+    printf("cvar1 =%c  svar1 = %d !\n",mdtvar2.cvar1,mdtvar2.svar1);
+    return 0;
+}*/

@@ -1,0 +1,120 @@
+#include <stdio.h>
+#include <stdlib.h>
+typedef struct mydatatype_s
+{
+
+    long lv1;
+    struct mydatatype_s *Next ;
+    struct mydatatype_s *prev;
+}myDT_ST;
+
+int main()
+{
+
+    myDT_ST mydt_st1, mydt_st2, mydt_st3;
+    struct mydatatype_s *ptr;
+    ptr = &mydt_st1;
+   /* ptr = &mydt_st2;
+    ptr = &mydt_st3; */
+     mydt_st1.lv1 = 1111;
+    mydt_st2.lv1 = 2222;
+    mydt_st3.lv1 = 3333;
+
+    printf("st1's val using ptr %d \n",ptr->lv1);
+
+
+    printf("st1addr= %x \n", &mydt_st1);
+    printf("st2addr= %x \n", &mydt_st2);
+    printf("st3addr= %x \n", &mydt_st3);
+    mydt_st1.Next = &mydt_st2;
+    mydt_st2.Next = &mydt_st3;
+    mydt_st3.Next = &mydt_st1;
+    mydt_st3.prev = &mydt_st2;
+    mydt_st2.prev = &mydt_st1;
+    mydt_st1.prev = &mydt_st3;
+    printf("st1's next data = %d \n ", mydt_st1.Next->lv1);
+    printf("st1's next next data = %d \n", mydt_st1.Next->Next->lv1);
+    printf("st2's next data = %d \n ", mydt_st2.Next->lv1);
+    printf("st3's next data= %d \n", mydt_st3.Next->lv1);
+    printf("st2's prev data = %d \n ", mydt_st2.prev->lv1);
+    printf("st1's next= %x \n", mydt_st1.Next);
+    printf("st3's prev= %x \n", mydt_st3.prev);
+    printf("st1's prev= %x \n ", mydt_st1.prev);
+    printf("st3's next= %x \n", mydt_st3.Next);
+
+
+    //printf("st1's next addr= %x \n", &(mydt_st1.Next));
+
+
+
+    return 0;
+}
+
+
+
+
+
+
+/* struct mydatatype_s
+    {
+        unsigned char cvar0 :1;
+        unsigned char cvar1 :1;
+        unsigned char cvar2 :1;
+        unsigned char cvar3 :1;
+        unsigned char cvar4 :1;
+        unsigned char cvar5 :1;
+        unsigned char cvar6 :1;
+        unsigned char cvar7 :1;
+        //short svar1;
+
+    };
+union uabc
+{
+    struct mydatatype_s mdt_s1;
+    char cvar8;
+
+};
+
+int main()
+{
+    union uabc uabc1 ;
+
+    uabc1.mdt_s1.cvar0= 1;
+    uabc1.mdt_s1.cvar1= 1;
+    uabc1.mdt_s1.cvar2= 0;
+    uabc1.mdt_s1.cvar3= 0;
+    uabc1.mdt_s1.cvar4= 1;
+    uabc1.mdt_s1.cvar5= 0;
+    uabc1.mdt_s1.cvar6= 1;
+    uabc1.mdt_s1.cvar7= 0;
+    //mydatatype_st mdtvar1;
+
+    printf(" data = %d \n", uabc1.cvar8);
+    uabc1.cvar8 = 0x35 ;
+    printf(" size= %d \n", sizeof(union uabc));
+    return 0;
+}
+*/
+
+/*
+int main()
+{
+    struct mydatatype_s mdtvar1, *p_mdtvar1;
+    p_mdtvar1= &mdtvar1;
+    mydatatype_st mdtvar2;
+    mdtvar1.cvar1 = 10 ;
+    mdtvar1.svar1 = 1234;
+    printf("cvar1 =%c  svar1 = %d !\n",mdtvar1.cvar1,mdtvar1.svar1);
+    printf("ptr cvar1 =%c  svar1 = %d !\n",p_mdtvar1->cvar1,p_mdtvar1->svar1);
+
+    mdtvar1.cvar1 = 59 ;
+    mdtvar1.svar1 = 1234;
+    printf("cvar1 =%c  svar1 = %d !\n",mdtvar1.cvar1,mdtvar1.svar1);
+    printf("ptr cvar1 =%c  svar1 = %d !\n",p_mdtvar1->cvar1,p_mdtvar1->svar1);
+    printf("size= %d \n", sizeof(mydatatype_st));
+    printf("ptr size= %d \n", sizeof(p_mdtvar1));
+   /* scanf("%c", &mdtvar2.cvar1);
+    scanf("%d", &mdtvar2.svar1);
+    printf("cvar1 =%c  svar1 = %d !\n",mdtvar2.cvar1,mdtvar2.svar1);
+    return 0;
+}*/
